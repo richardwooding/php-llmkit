@@ -6,6 +6,8 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-09-22
+
 ### Added
 
 PHP port of [richardwooding/llmkit](https://github.com/richardwooding/llmkit)
@@ -43,3 +45,6 @@ v0.3.0, covering the whole library surface:
 - Capabilities are requested by interface name instead of generics, and
   sentinel errors are exception classes.
 - Vertex AI over gRPC is not ported.
+
+[Unreleased]: https://github.com/richardwooding/php-llmkit/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/richardwooding/php-llmkit/releases/tag/v0.1.0
