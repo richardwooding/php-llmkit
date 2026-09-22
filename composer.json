@@ -1,0 +1,65 @@
+{
+    "name": "richardwooding/llmkit",
+    "description": "Multi-vendor AI client for PHP: one factory, one-method interfaces, eleven providers (OpenAI, Anthropic, Vertex AI, Ollama, DeepSeek, Cohere, Groq, x.ai, Hugging Face, OpenRouter, VoyageAI)",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["ai", "llm", "openai", "anthropic", "claude", "gemini", "ollama", "embeddings", "streaming"],
+    "homepage": "https://github.com/richardwooding/php-llmkit",
+    "authors": [
+        {
+            "name": "Richard Wooding",
+            "homepage": "https://richardwooding.github.io"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "psr/http-client": "^1.0",
+        "psr/http-factory": "^1.0",
+        "psr/http-message": "^1.1 || ^2.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.64",
+        "google/auth": "^1.40",
+        "guzzlehttp/guzzle": "^7.9",
+        "nyholm/psr7": "^1.8",
+        "php-http/discovery": "^1.20",
+        "phpstan/phpstan": "^2.0",
+        "phpunit/phpunit": "^11.4",
+        "symfony/http-client": "^7.1"
+    },
+    "suggest": {
+        "symfony/http-client": "Incremental SSE streaming; PSR-18 clients that buffer response bodies delay stream chunks",
+        "google/auth": "Application Default Credentials for the Vertex AI provider",
+        "php-http/discovery": "Auto-discovery of the PSR-18 client and PSR-17 factories"
+    },
+    "autoload": {
+        "psr-4": {
+            "LlmKit\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LlmKit\\Tests\\": "tests/"
+        }
+    },
+    "bin": ["bin/llmkit"],
+    "scripts": {
+        "test": "phpunit --exclude-group integration",
+        "test:integration": "phpunit --group integration",
+        "stan": [
+            "phpstan analyse",
+            "phpstan analyse -c phpstan-tests.neon.dist"
+        ],
+        "fix": "php-cs-fixer fix",
+        "lint": "php-cs-fixer fix --dry-run --diff",
+        "check": ["@lint", "@stan", "@test"]
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": false
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

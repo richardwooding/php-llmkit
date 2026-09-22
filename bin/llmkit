@@ -1,0 +1,20 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+namespace LlmKit\Cli;
+
+foreach ([__DIR__ . '/../vendor/autoload.php', __DIR__ . '/../../../autoload.php'] as $autoload) {
+    if (file_exists($autoload)) {
+        require $autoload;
+        break;
+    }
+}
+
+if (!class_exists(Command::class)) {
+    fwrite(STDERR, "llmkit: run composer install first\n");
+    exit(1);
+}
+
+exit(Command::run(array_slice($argv, 1), STDIN, STDOUT, STDERR));

@@ -1,0 +1,8 @@
+# Tests assert against decoded JSON, which is mixed by nature; level 6 keeps
+# the useful checks (missing types, unknown methods) without demanding a cast
+# on every wire-body assertion.
+parameters:
+    level: 6
+    paths:
+        - tests
+    treatPhpDocTypesAsCertain: false
